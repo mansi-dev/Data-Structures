@@ -21,8 +21,24 @@ public class BinaryTreeOps {
         if(temp==null)
             return;
         inorder(temp.left);
-        System.out.println(temp.key + " ");
+        System.out.print(temp.key + " ");
         inorder(temp.right);
+    }
+
+    static void preOrderTraversal(Node temp){
+        if(temp==null)
+            return;
+        System.out.print(temp.key+" ");
+        preOrderTraversal(temp.left);
+        preOrderTraversal(temp.right);
+    }
+
+    static void postOrderTraversal(Node temp){
+        if(temp==null)
+            return;
+        postOrderTraversal(temp.left);
+        postOrderTraversal(temp.right);
+        System.out.print(temp.key+" ");
     }
 
     static void insert(Node temp, int key){
@@ -61,12 +77,14 @@ public class BinaryTreeOps {
         root.right.left = new Node(15);
         root.right.right = new Node(8);
 
-        inorder(root);
-
         int key = 12;
         insert(root, key);
-        System.out.println("---------------------------------------");
+        System.out.println("\n-----------------InOrder----------------------");
         inorder(root);
+        System.out.println("\n-----------------PreOrder---------------------");
 
+        preOrderTraversal(root);
+        System.out.println("\n-----------------PostOrder--------------------");
+        postOrderTraversal(root);
     }
 }
