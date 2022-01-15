@@ -1,4 +1,3 @@
-package com.cp.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -105,7 +104,6 @@ public class BinaryTreeOps {
         preOrderTraversal(root);
         System.out.println("\n-----------------PostOrder--------------------");
         postOrderTraversal(root);
-        
         System.out.println("\n-----------------LevelOrder--------------------");
         levelOrderTraversal(root);
     }

@@ -1,7 +1,8 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BinaryTreeKDistance {
+public class BinaryTreeCheckSum {
+
     static class Node{
         int key;
         Node left;
@@ -21,19 +22,6 @@ public class BinaryTreeKDistance {
         System.out.print(temp.key+" ");
         preOrder(temp.left);
         preOrder(temp.right);
-    }
-
-    public void printKDist(Node temp,int k){
-        if(temp==null){
-            return;
-        }
-        if(k==0){
-            System.out.print(temp.key+ " ");
-        }else{
-            printKDist(temp.left, k-1);
-            printKDist(temp.right, k-1);
-        }
-
     }
 
     public void insert(Node temp, int key){
@@ -64,18 +52,33 @@ public class BinaryTreeKDistance {
         }
     }
 
+    public boolean checkSum(Node temp){
+        if(temp==null)
+            return true;
+        if(temp.left==null && temp.right==null){
+            return true;
+        }
+        int sum=0;
+        if(temp.left!=null){
+            sum += temp.left.key;
+        }
+        if(temp.right!=null){
+            sum += temp.right.key;
+        }
+
+        return (temp.key==sum && checkSum(temp.left) && checkSum(temp.right));
+    }
+
     public static void main(String[] args) {
-        BinaryTreeKDistance binaryTreeKDistance = new BinaryTreeKDistance();
-        binaryTreeKDistance.insert(root, 10);
-        binaryTreeKDistance.insert(root, 20);
-        binaryTreeKDistance.insert(root, 30);
-        binaryTreeKDistance.insert(root, 40);
-        binaryTreeKDistance.insert(root, 50);
-        System.out.println("\n-----------------PreOrder---------------------");
+        BinaryTreeCheckSum binaryTreeCheckSum = new BinaryTreeCheckSum();
 
-        binaryTreeKDistance.preOrder(root);
-        System.out.println("\n-----------------Nodes------------------------");
+        binaryTreeCheckSum.insert(root, 30);
+        binaryTreeCheckSum.insert(root, 20);
+        binaryTreeCheckSum.insert(root, 10);
+        binaryTreeCheckSum.insert(root, 10);
+        binaryTreeCheckSum.insert(root, 10);
 
-        binaryTreeKDistance.printKDist(root, 2);
+        boolean ans = binaryTreeCheckSum.checkSum(root);
+        System.out.println(ans);
     }
 }
