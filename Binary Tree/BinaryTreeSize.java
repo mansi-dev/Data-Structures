@@ -51,6 +51,14 @@ public class BinaryTreeSize {
         }
         
     }
+
+    public int getMaxInTree(Node temp){
+        if(temp==null){
+            return Integer.MIN_VALUE;
+        }else{
+            return Math.max(temp.key,Math.max(getMaxInTree(temp.left), getMaxInTree(temp.right)));
+        }
+    }
     public static void main(String[] args) {
         BinaryTreeSize binaryTreeSize = new BinaryTreeSize();
         binaryTreeSize.insert(root, 10);
@@ -62,5 +70,9 @@ public class BinaryTreeSize {
         int size = binaryTreeSize.getSizeOfTree(root);
 
         System.out.println("Size of tree = "+size);
+
+        int max = binaryTreeSize.getMaxInTree(root);
+
+        System.out.println("Max value in tree = "+ max);
     }
 }
