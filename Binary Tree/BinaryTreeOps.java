@@ -41,6 +41,25 @@ public class BinaryTreeOps {
         System.out.print(temp.key+" ");
     }
 
+    static void levelOrderTraversal(Node temp){
+        if (temp==null) {
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(temp);
+
+        while (!q.isEmpty()) {
+            temp = q.poll();
+            System.out.print(temp.key + " ");
+            if(temp.left!=null){
+                q.add(temp.left);
+            }
+            if(temp.right!=null){
+                q.add(temp.right);
+            }
+        }
+    }
+
     static void insert(Node temp, int key){
         if(temp==null){
             root = new Node(key);
@@ -86,5 +105,8 @@ public class BinaryTreeOps {
         preOrderTraversal(root);
         System.out.println("\n-----------------PostOrder--------------------");
         postOrderTraversal(root);
+        
+        System.out.println("\n-----------------LevelOrder--------------------");
+        levelOrderTraversal(root);
     }
 }
