@@ -33,5 +33,9 @@ public class QueueUStack2 {
         qs.enqueue(5);
 
         System.out.println(qs.dequeue());
+        qs.enqueue(6);
+        System.out.println(qs.dequeue());
+        System.out.println(qs.stack1.peek());
+
     }
 }
